@@ -9,7 +9,7 @@ var td = document.querySelectorAll("tr td");
 
 // Player.innerText = "The Player is " + flag;
 //Cases of Win
-win = [
+winCases = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -43,10 +43,10 @@ for (var i = 0; i < tr.length; i++) {
 //Check Win
 function Win(e) {
 
-    for (var i = 0; i < win.length; i++) {
+    for (var i = 0; i < winCases.length; i++) {
 
-        if (td[win[i][0]].textContent === flag && td[win[i][1]].textContent === flag &&
-            td[win[i][2]].textContent === flag) {
+        if (td[winCases[i][0]].textContent === flag && td[winCases[i][1]].textContent === flag &&
+            td[winCases[i][2]].textContent === flag) {
 
             Player.innerText = ""
             Message.innerText = flag + " is Win";
