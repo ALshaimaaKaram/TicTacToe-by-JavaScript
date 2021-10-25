@@ -19,12 +19,9 @@ win = [
 function Write(e) {
     e.target.innerText = flag;
     flag = (flag=="X")?"O":"X";
-    // if (flag == "X") {
-    //     flag = "O";
-    // } else {
-    //     flag = "X"
-    // }
 }
+
+
 
 for (var i = 0; i < tr.length; i++) {
     tr[i].addEventListener('click', Write, false);
@@ -39,13 +36,14 @@ for (var i = 0; i < tr.length; i++) {
 // }
 
 //Check Win
+var ckwin = false;
 function Win(e) {
-    // var ckwin = false;
-    for (var i = 0; i < win.length || ckwin == true; i++) {
+    for (var i = 0; i < win.length; i++) {
         if (td[win[i][0]].textContent === flag && td[win[i][1]].textContent === flag &&
             td[win[i][2]].textContent === flag) {
             alert(flag + " Win");
         }
+        // e.stopPropogation();
     }
 }
 
