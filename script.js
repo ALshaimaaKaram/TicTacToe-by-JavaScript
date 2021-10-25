@@ -64,6 +64,12 @@ function Win(e) {
     }
 }
 
+function Reset() {
+    for (var i = 0; i < td.length; i++) {
+        td[i].innerText = "";
+    }
+}
+
 //Check if All Cells of Table Fill or Not
 // function checkCells() {
 //     for (var i = 0; i < td.length; i++) {
