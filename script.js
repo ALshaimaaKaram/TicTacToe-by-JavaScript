@@ -17,10 +17,9 @@ win = [
 
 //detect and Write X or O 
 function Write(e) {
-    if(e.target.innerText === "")
-    {
+    if (e.target.innerText === "") {
         e.target.innerText = flag;
-        flag = (flag=="X")?"O":"X";
+        flag = (flag == "X") ? "O" : "X";
     }
 }
 
@@ -40,19 +39,20 @@ for (var i = 0; i < tr.length; i++) {
 
 //Check Win
 var ckwin = false;
+
 function Win(e) {
     for (var i = 0; i < win.length; i++) {
         if (td[win[i][0]].textContent === flag && td[win[i][1]].textContent === flag &&
             td[win[i][2]].textContent === flag) {
-            alert(flag + " Win");
-            
+            document.getElementById("Message").innerText = flag + " is Win";
+            e.target.innerText = "";
             for (var i = 0; i < tr.length; i++) {
                 //remove event listenr
                 tr[i].removeEventListener('click', Write);
                 // Win()
             }
+            break;
         }
         // e.stopPropogation();
     }
 }
-
