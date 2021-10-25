@@ -45,6 +45,12 @@ function Win(e) {
         if (td[win[i][0]].textContent === flag && td[win[i][1]].textContent === flag &&
             td[win[i][2]].textContent === flag) {
             alert(flag + " Win");
+            
+            for (var i = 0; i < tr.length; i++) {
+                //remove event listenr
+                tr[i].removeEventListener('click', Write);
+                // Win()
+            }
         }
         // e.stopPropogation();
     }
