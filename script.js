@@ -17,8 +17,11 @@ win = [
 
 //detect and Write X or O 
 function Write(e) {
-    e.target.innerText = flag;
-    flag = (flag=="X")?"O":"X";
+    if(e.target.innerText === "")
+    {
+        e.target.innerText = flag;
+        flag = (flag=="X")?"O":"X";
+    }
 }
 
 
