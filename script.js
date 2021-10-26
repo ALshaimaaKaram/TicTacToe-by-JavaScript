@@ -20,59 +20,82 @@ winCases = [
     [2, 4, 6]
 ]
 
+AddEvents();
 //detect and Write X or O 
-function Write(e) {
-   
-    if (e.target.innerText === "") {
-        Player.innerText = "The Player is " + flag;
-        flag = (flag == "X") ? "O" : "X";
-        e.target.innerText = flag;
+function ClickHandler(e) {
+     
+    Write(e);
+
+     if(IsPlayerWin()) {
+        RemoveEvents();
+        ShowWinMessage();
     }
-
-    Win(e);
 }
 
+//add event listener to rows
+function AddEvents () {
 
-
-for (var i = 0; i < tr.length; i++) {
-    tr[i].addEventListener('click', Write, false);
-    //tr[i].addEventListener('click', Win, false);
-
-    // Win()
+    for (var i = 0; i < tr.length; i++) {
+        tr[i].addEventListener('click', ClickHandler, false);
+    
+    }
+}
+//remove event listener from rows
+function RemoveEvents(){
+    for (var i = 0; i < tr.length; i++) {
+        tr[i].removeEventListener('click', ClickHandler, false);
+    
+    }
 }
 
-//Check Win
-function Win(e) {
+// show win message 
+function ShowWinMessage(){
+    Player.innerText = ""
+    Message.innerText = flag + " is Win";
+}
+
+//check if the player is win 
+function IsPlayerWin() {
 
     for (var i = 0; i < winCases.length; i++) {
 
         if (td[winCases[i][0]].textContent === flag && td[winCases[i][1]].textContent === flag &&
             td[winCases[i][2]].textContent === flag) {
-
-            Player.innerText = ""
-            Message.innerText = flag + " is Win";
-            //e.target.innerText = "";
-
-            for (var i = 0; i < tr.length; i++) {
-                //remove event listenr
-                tr[i].removeEventListener('click', Write);
-            }
-            break;
+             return true ;
+             
         }
     }
+
+    return false
 }
 
-function Reset() {
-    for (var i = 0; i < td.length; i++) {
-        td[i].innerText = "";
+// write X or O 
+function Write (e){
+
+    if (e.target.innerText === "") {
+        Player.innerText = "The Player is " + flag;
+        flag = (flag == "X") ? "O" : "X";
+        e.target.innerText = flag;
     }
+}
+
+// clear 
+function Clear(){
+
+    flag="X";
     Player.innerText = "The Player is " + flag;
     Message.innerText = "";
+    for (var i = 0; i < td.length; i++) td[i].innerText ="" ;
+ 
+}
+
+// reset 
+function Reset() {
+ 
+    AddEvents(); 
+    Clear();
+   
+
 }
 
 
-// function indexForTD() {
-//     for (var i = 0; i < td.length; i++) {
-//         td[i].index = i;
-//     }
-// }
