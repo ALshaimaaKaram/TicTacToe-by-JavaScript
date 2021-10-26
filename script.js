@@ -22,9 +22,10 @@ winCases = [
 
 //detect and Write X or O 
 function Write(e) {
-    Player.innerText = "The Player is " + flag;
-    flag = (flag == "X") ? "O" : "X";
+   
     if (e.target.innerText === "") {
+        Player.innerText = "The Player is " + flag;
+        flag = (flag == "X") ? "O" : "X";
         e.target.innerText = flag;
     }
 
